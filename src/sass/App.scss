@@ -1,0 +1,163 @@
+$ball-width: 100px;
+
+@mixin border-gradient($from, $to, $weight: 0) {
+  $mix-main: mix($from, $to);
+  $mix-sub-from: mix($mix-main, $from);
+  $mix-sub-to: mix($mix-main, $to);
+
+  box-shadow: 0 1px 0 $weight rgba($mix-sub-to, .25),
+  0 -2px 0 $weight rgba($mix-sub-from, .25),
+  2px 0 0 $weight rgba($mix-sub-to, .25),
+  2px 0 0 $weight  rgba($mix-sub-from, .25),
+  2px 2px 0 $weight rgba($mix-main, .5),
+  -2px 2px 0 $weight rgba($mix-main, .5),
+  2px -2px 0 $weight rgba($to, .75),
+  -2px -2px 0 $weight rgba($from, .75);
+}
+
+
+@mixin bg-radial($start-colour, $start-position, $end-colour, $end-position) {
+  background: -moz-radial-gradient(center, ellipse cover, $start-colour $start-position, $end-colour $end-position);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, Colour-stop($start-position,$start-colour), Colour-stop($end-position,$end-colour));
+  background: -webkit-radial-gradient(center, ellipse cover, $start-colour $start-position,$end-colour $end-position);
+  background: -o-radial-gradient(center, ellipse cover, $start-colour $start-position,$end-colour $end-position);
+  background: -ms-radial-gradient(center, ellipse cover, $start-colour $start-position,$end-colour $end-position);
+  background: radial-gradient(ellipse at center, $start-colour $start-position,$end-colour $end-position);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  .App {
+    margin: auto;
+    width: 700px;
+    margin-top: 100px;
+    font-family: 'Lato', sans-serif;
+    height: 400px;
+
+    .ball-container {
+      width: 2*$ball-width;
+      height: 4*$ball-width;
+      @include border-gradient(#00FFBB, #185995);
+      border-radius: 5px;
+      float: left;
+      display: flex;
+      justify-content: center;
+
+      .ball {
+        width: $ball-width;
+        height: $ball-width;
+        border-radius: 50%;
+        @include bg-radial(#9EC1FA, 0%, #185995, 100%);
+      }
+      .bouncing{
+        width: $ball-width;
+        height: $ball-width;
+        border-radius: 50%;
+        @include bg-radial(#9EC1FA, 0%, #185995, 100%);
+        animation-name: bancing;
+        animation-duration: 1500ms;
+        animation-timing-function: ease-in;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+      @keyframes bancing {
+        0% {
+          transform: translate(0px, 0px);
+          width: $ball-width;
+          height: $ball-width;
+          border-radius: 50%;
+        }
+        90% {
+          width: $ball-width;
+          height: $ball-width;
+          border-radius: 50%;
+        }
+
+        100% {
+          transform: translate(0px, 347px);
+          width: 100px;
+          height: 50px;
+          border-radius: 50%;
+        }
+      }
+    }
+    .text-container{
+      float: left;
+      height: 400px;
+      font-size: 16px;
+      width: calc(100% - 210px);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      p{
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      button{
+        padding: 10px 15px 10px 15px;
+        font-size: 14px;
+        border: 0;
+        background-color: #185995;
+        border-radius: 3px;
+        color: white;
+        font-weight: 900;
+      }
+    }
+    .ball-container{
+      margin-left: 10px;
+    }
+  }
+
+}
+
+@media all and (min-width: 500px) and (max-width: 700px) {
+  .text-container {
+    width: 100%;
+    p{
+      font-size: 16px;
+    }
+  }
+  .ball-container{
+    width:100%
+  }
+}
+@media all and (max-width: 499px){
+  .App {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    .text-container {
+      clear: both;
+      margin: auto;
+      width: 80%;
+      button{
+        margin: auto;
+        margin-top: 10px;
+      }
+      p{
+        margin: auto;
+        margin-top: 10px;
+        font-size: 16px;
+
+      }
+
+    }
+    .ball-container {
+      margin: auto;
+    }
+  }
+}
+
+
+
