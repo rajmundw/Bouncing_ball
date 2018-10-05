@@ -1,3 +1,4 @@
+
 $ball-width: 100px;
 
 @mixin border-gradient($from, $to, $weight: 0) {
@@ -24,12 +25,12 @@ $ball-width: 100px;
   background: -ms-radial-gradient(center, ellipse cover, $start-colour $start-position,$end-colour $end-position);
   background: radial-gradient(ellipse at center, $start-colour $start-position,$end-colour $end-position);
 }
-
+//css reset
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-
+//main aplication class
   .App {
     margin: auto;
     width: 700px;
@@ -45,6 +46,7 @@ $ball-width: 100px;
       float: left;
       display: flex;
       justify-content: center;
+      margin-left: 10px;
 
       .ball {
         width: $ball-width;
@@ -52,18 +54,20 @@ $ball-width: 100px;
         border-radius: 50%;
         @include bg-radial(#9EC1FA, 0%, #185995, 100%);
       }
+      //class during bouncing ball
       .bouncing{
         width: $ball-width;
         height: $ball-width;
         border-radius: 50%;
         @include bg-radial(#9EC1FA, 0%, #185995, 100%);
-        animation-name: bancing;
+        animation-name: bouncing;
         animation-duration: 1500ms;
         animation-timing-function: ease-in;
         animation-iteration-count: infinite;
         animation-direction: alternate;
       }
-      @keyframes bancing {
+      //animation steps
+      @keyframes bouncing {
         0% {
           transform: translate(0px, 0px);
           width: $ball-width;
@@ -112,27 +116,30 @@ $ball-width: 100px;
         font-weight: 900;
       }
     }
-    .ball-container{
-      margin-left: 10px;
-    }
   }
 
 }
 
-@media all and (min-width: 500px) and (max-width: 700px) {
-  .text-container {
+//RWD
+@media all and (min-width: 450px) and (max-width: 700px) {
+  .App {
     width: 100%;
-    p{
-      font-size: 16px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .text-container {
+      width: 60%;
+    }
+    .ball-container {
+      width: 200px;
     }
   }
-  .ball-container{
-    width:100%
-  }
 }
-@media all and (max-width: 499px){
+@media all and (max-width: 449px){
   .App {
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -155,6 +162,7 @@ $ball-width: 100px;
     }
     .ball-container {
       margin: auto;
+      width: 200px;
     }
   }
 }

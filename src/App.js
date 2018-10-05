@@ -5,7 +5,7 @@ class App extends Component {
       ballClass:'ball',
       buttonText:'Bounce the ball'
   }
-
+//function to move ball and stop ball, it work on click in button
   moveBallHandler=()=>{
     if(this.state.ballClass==="ball"){
       this.setState({
