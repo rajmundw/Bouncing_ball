@@ -9,6 +9,7 @@
 		<li>Webpack</li>
 		<li>Gulp</li>
 		<li>SASS</li>
+			<li>Bootstrap</li>
     <li>RWD</li>
 </ul>
 
