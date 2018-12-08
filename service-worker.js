@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Bouncing_ball/precache-manifest.0fe2d43021e97b9b67af890875a1d30a.js"
+  "/Bouncing_ball/precache-manifest.73b0dc2876fc723d8d86e255fde096f8.js"
 );
 
 workbox.clientsClaim();
