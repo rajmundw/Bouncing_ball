@@ -19,3 +19,8 @@
 		</li>
 	<li>To run file you have to write in console in this same folder "npm start" to switch aplication</li>
 </ul>
+
+<h2>Live:</h2>
+<ul>
+	<li>https://rajmundw.github.io/Bouncing_ball/</li>
+</ul>
